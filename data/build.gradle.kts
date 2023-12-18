@@ -1,6 +1,8 @@
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
+    kotlin("kapt")
+    id("com.google.dagger.hilt.android")
 }
 
 android {
@@ -30,6 +32,9 @@ android {
 //    kotlinOptions {
 //        jvmTarget = "1.8"
 //    }
+    kapt {
+        correctErrorTypes = true
+    }
 }
 
 dependencies {
@@ -51,5 +56,7 @@ dependencies {
 
     // Dagger Hilt
     implementation("androidx.hilt:hilt-navigation-compose:1.0.0")
+    implementation("com.google.dagger:hilt-android:2.44")
+    kapt("com.google.dagger:hilt-android-compiler:2.44")
 
 }
