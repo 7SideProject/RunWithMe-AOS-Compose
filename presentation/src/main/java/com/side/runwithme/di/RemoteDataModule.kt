@@ -3,7 +3,7 @@ package com.side.runwithme.di
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.side.data.api.LoginApi
-import com.side.runwithme.utils.BASE_URL
+import com.side.runwithme.BuildConfig.BASE_URL
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
