@@ -15,6 +15,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CornerSize
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -122,6 +123,7 @@ fun CardViewScreen(
     Column(
         modifier = Modifier
             .fillMaxWidth()
+            .wrapContentHeight()
             .clip(shape = cardRoundedShpae)
             .border(width = 1.dp, color = MainBlack, shape = cardRoundedShpae)
             .clickable {
@@ -130,7 +132,8 @@ fun CardViewScreen(
     ) {
 
         Image(
-            modifier = Modifier.fillMaxWidth(),
+            modifier = Modifier.fillMaxWidth()
+                .wrapContentHeight(),
             painter = painterResource(id = icon),
             contentDescription = text
         )
@@ -140,6 +143,7 @@ fun CardViewScreen(
         Row(
             modifier = Modifier
                 .fillMaxWidth()
+                .wrapContentHeight()
                 .padding(8.dp),
             horizontalArrangement = Arrangement.SpaceBetween
         ) {

@@ -29,6 +29,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
@@ -126,7 +127,7 @@ fun TextInput(
 fun EmailInput(
     modifier: Modifier = Modifier,
     emailState: MutableState<String>,
-    labelId: String = "Email",
+    labelId: String = stringResource(id = R.string.email),
     enabled: Boolean = true,
     isSingleLine: Boolean = true,
     imeAction: ImeAction = ImeAction.Next,
