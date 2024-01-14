@@ -2,9 +2,17 @@
 <resources>
 
     <string name="email">이메일</string>
+    <string name="nickname">닉네임</string>
     <string name="password">비밀번호</string>
+    <string name="password_confirm">비밀번호 확인</string>
     <string name="login">로그인</string>
     <string name="join">회원가입</string>
     <string name="find_password">비밀번호 찾기</string>
+    <string name="send_verify_number">인증 번호 전송</string>
+    <string name="verify">인증</string>
+    <string name="verify_number">인증 번호</string>
+
+    <string name="height">키</string>
+    <string name="weight">몸무게</string>
 
 </resources>
