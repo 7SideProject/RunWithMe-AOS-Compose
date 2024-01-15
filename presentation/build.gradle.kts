@@ -1,6 +1,15 @@
+import java.util.Properties
+import java.io.FileInputStream
+
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    kotlin("kapt")
+    id("com.google.dagger.hilt.android")
+}
+
+val properties = Properties().apply {
+    load(FileInputStream(project.rootProject.file("local.properties")))
 }
 
 android {
@@ -11,15 +20,18 @@ android {
         applicationId = "com.side.runwithme"
         minSdk = 26
         targetSdk = 34
-        versionCode = 1
-        versionName = "1.0"
+        versionCode = 2
+        versionName = "1.3"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
             useSupportLibrary = true
         }
 
-        buildConfigField("String", "BASEURL", project.properties["BASEURL"].toString())
+        buildConfigField("String", "BASE_URL", properties.getProperty("BASE_URL").toString())
+        buildConfigField("String", "NAVERAPIKEY", properties.getProperty("NAVERAPIKEY").toString())
+        buildConfigField("String", "MAIL_ID", properties.getProperty("MAIL_ID").toString())
+        buildConfigField("String", "MAIL_PASSWORD", properties.getProperty("MAIL_PASSWORD").toString())
 
     }
 
@@ -48,6 +60,9 @@ android {
         resources {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
+    }
+    kapt {
+        correctErrorTypes = true
     }
 }
 
@@ -78,6 +93,9 @@ dependencies {
     // navigation
     implementation("androidx.navigation:navigation-compose:2.7.5")
 
+    // navigation animation
+    implementation("com.google.accompanist:accompanist-navigation-animation:0.21.1-beta")
+
     // retrofit
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
 
@@ -87,8 +105,8 @@ dependencies {
 
     // Dagger Hilt
     implementation("androidx.hilt:hilt-navigation-compose:1.1.0")
-
-    implementation("com.google.accompanist:accompanist-navigation-animation:0.21.1-beta")
+    implementation("com.google.dagger:hilt-android:2.44")
+    kapt("com.google.dagger:hilt-android-compiler:2.44")
 
     // lottie
     implementation("com.airbnb.android:lottie-compose:5.2.0")
