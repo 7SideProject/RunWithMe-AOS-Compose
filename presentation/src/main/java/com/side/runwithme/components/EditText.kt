@@ -29,6 +29,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
@@ -106,7 +107,6 @@ fun TextInput(
         singleLine = isSingleLine,
         textStyle = MaterialTheme.typography.bodySmall.copy(color = MaterialTheme.colorScheme.onBackground),
         modifier = modifier
-            .padding(bottom = 10.dp, start = 10.dp, end = 10.dp, top = 10.dp)
             .fillMaxWidth()
             .background(Color.Transparent)
             .focusRequester(focusRequester = focusRequester)
@@ -138,7 +138,7 @@ fun EmailInput(
     TextField(
         value = emailState.value,
         onValueChange = { emailState.value = it },
-        label = { Text(text = labelId, style = MaterialTheme.typography.bodySmall) },
+        label = { Text(text = stringResource(id = R.string.email), style = MaterialTheme.typography.bodySmall) },
         singleLine = isSingleLine,
         textStyle = MaterialTheme.typography.bodySmall.copy(color = MaterialTheme.colorScheme.onBackground),
         modifier = modifier
