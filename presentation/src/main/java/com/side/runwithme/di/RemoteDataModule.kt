@@ -3,7 +3,7 @@ package com.side.runwithme.di
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.side.data.api.LoginApi
-import com.side.runwithme.BuildConfig.BASE_URL
+import com.side.runwithme.BuildConfig.BASEURL
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -59,7 +59,7 @@ object RemoteDataModule {
     @LoginHeaderRetrofit
     fun provideLoginHeaderRetrofitInstance(@LoginHeaderOkhttp client: OkHttpClient, gson: Gson): Retrofit {
         return Retrofit.Builder()
-            .baseUrl(BASE_URL)
+            .baseUrl(BASEURL)
             .addConverterFactory(GsonConverterFactory.create(gson))
             .client(client)
             .build()

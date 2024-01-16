@@ -28,11 +28,10 @@ android {
             useSupportLibrary = true
         }
 
-        buildConfigField("String", "BASE_URL", properties.getProperty("BASE_URL").toString())
-        buildConfigField("String", "NAVERAPIKEY", properties.getProperty("NAVERAPIKEY").toString())
-        buildConfigField("String", "MAIL_ID", properties.getProperty("MAIL_ID").toString())
-        buildConfigField("String", "MAIL_PASSWORD", properties.getProperty("MAIL_PASSWORD").toString())
-
+        buildConfigField("String", "BASEURL", "${properties.getProperty("BASEURL")}")
+        buildConfigField("String", "NAVERAPIKEY", "${properties.getProperty("NAVERAPIKEY")}")
+        buildConfigField("String", "MAIL_ID", "${properties.getProperty("MAIL_ID")}")
+        buildConfigField("String", "MAIL_PASSWORD", "${properties.getProperty("MAIL_PASSWORD")}")
     }
 
     buildTypes {
