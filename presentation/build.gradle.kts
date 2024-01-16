@@ -28,12 +28,14 @@ android {
             useSupportLibrary = true
         }
 
-        val localProperties = Properties()
-        localProperties.load(project.rootProject.file("local.properties").inputStream())
-        buildConfigField("String", "BASEURL", "${localProperties.getProperty("BASEURL")}")
-        buildConfigField("String", "NAVERAPIKEY", "${localProperties.getProperty("NAVERAPIKEY")}")
-        buildConfigField("String", "MAIL_ID", "${localProperties.getProperty("MAIL_ID")}")
-        buildConfigField("String", "MAIL_PASSWORD", "${localProperties.getProperty("MAIL_PASSWORD")}")
+        val properties = Properties().apply {
+            load(project.rootProject.file("local.properties").inputStream())
+        }
+
+        buildConfigField("String", "BASEURL", "${properties.getProperty("BASEURL")}")
+        buildConfigField("String", "NAVERAPIKEY", "${properties.getProperty("NAVERAPIKEY")}")
+        buildConfigField("String", "MAIL_ID", "${properties.getProperty("MAIL_ID")}")
+        buildConfigField("String", "MAIL_PASSWORD", "${properties.getProperty("MAIL_PASSWORD")}")
     }
 
     buildTypes {
