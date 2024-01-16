@@ -28,10 +28,6 @@ android {
             useSupportLibrary = true
         }
 
-        val properties = Properties().apply {
-            load(project.rootProject.file("local.properties").inputStream())
-        }
-
         buildConfigField("String", "BASEURL", "${properties.getProperty("BASEURL")}")
         buildConfigField("String", "NAVERAPIKEY", "${properties.getProperty("NAVERAPIKEY")}")
         buildConfigField("String", "MAIL_ID", "${properties.getProperty("MAIL_ID")}")
