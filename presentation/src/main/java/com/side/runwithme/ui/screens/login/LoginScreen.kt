@@ -1,32 +1,29 @@
 package com.side.runwithme.ui.screens.login
 
-import android.util.Log
+import android.annotation.SuppressLint
 import android.widget.Toast
-import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.widthIn
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.paint
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
@@ -34,8 +31,6 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.side.runwithme.R
@@ -52,12 +47,23 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
-@Preview(showBackground = true)
+//240128 프리뷰 변경
+//@Preview(showBackground = true)
+//@Composable
+//fun LoginPreview() {
+//    val navController = rememberNavController()
+//    RunWithMeTheme {
+//        LoginScreen(navController, loginViewModel = hiltViewModel())
+//    }
+//}
+
+@Preview
 @Composable
-fun LoginPreview() {
+fun PreviewLoginScreenDesign() {
+    val snackbarHostState = remember { SnackbarHostState() }
     val navController = rememberNavController()
     RunWithMeTheme {
-        LoginScreen(navController, loginViewModel = hiltViewModel())
+        LoginScreenDesign(snackbarHostState, navController) { _, _ -> }
     }
 }
 
@@ -77,18 +83,6 @@ fun LoginScreen(
     val loginSuccessMsg = stringResource(id = R.string.login_success)
     val loginFailMsg = stringResource(id = R.string.login_fail)
     val loginErrorMsg = stringResource(id = R.string.login_error)
-
-    val email = rememberSaveable {
-        mutableStateOf("")
-    }
-
-    val password = remember {
-        mutableStateOf("")
-    }
-
-    val passwordVisibility = remember {
-        mutableStateOf(false)
-    }
 
     LaunchedEffect(Unit) {
         loginViewModel.eventFlow.collectLatest {
@@ -117,64 +111,11 @@ fun LoginScreen(
         }
     }
 
-    Scaffold(
-        modifier = Modifier
-            .fillMaxSize(),
-        snackbarHost = {
-            SnackbarHost(hostState = snackbarHostState)
-        }
-    ) {
-        Box(
-            modifier = Modifier
-                .fillMaxSize()
-                .paint(
-                    painterResource(R.drawable.img_login),
-                    contentScale = ContentScale.FillHeight
-                )
-                .padding(it)
-        ) {
-            Column(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(top = 64.dp)
-                    .padding(horizontal = 16.dp),
-                horizontalAlignment = Alignment.CenterHorizontally
-
-            ) {
-
-                Icon(
-                    modifier = Modifier.size(160.dp),
-                    painter = painterResource(id = R.drawable.login_logo),
-                    contentDescription = "RunWithMeLogo"
-                )
-
-                VerticalSpacer(104)
-
-                EmailInput(emailState = email)
-
-                VerticalSpacer(16)
-
-                PasswordInput(
-                    passwordState = password,
-                    labelId = stringResource(id = R.string.password),
-                    enabled = true,
-                    passwordVisibility = passwordVisibility
-                )
-
-                VerticalSpacer(16)
-
-                LoginButton {
-                    loginViewModel.loginWithEmail(email = email.value, password = password.value)
-                }
-
-                VerticalSpacer(16)
-
-                JoinButton {
-                    navController.navigate(BottomNavItem.Home.screenRoute)
-                }
-            }
-        }
-    }
+    LoginScreenDesign(
+        navController = navController,
+        snackbarHostState = snackbarHostState,
+        loginWithEmail = { email, password -> loginViewModel.loginWithEmail(email, password) }
+    )
 }
 
 @Composable
@@ -198,5 +139,95 @@ fun JoinButton(onClick: () -> Unit) {
 fun showSnackBar(scope: CoroutineScope, snackbarHostState: SnackbarHostState, msg: String) {
     scope.launch {
         snackbarHostState.showSnackbar(msg)
+    }
+}
+
+@SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun LoginScreenDesign(
+    snackbarHostState: SnackbarHostState,
+    navController: NavController,
+    loginWithEmail: (String, String) -> Unit
+) {
+    val email = rememberSaveable {
+        mutableStateOf("")
+    }
+
+    val password = remember {
+        mutableStateOf("")
+    }
+
+    val passwordVisibility = remember {
+        mutableStateOf(false)
+    }
+
+    val scrollState = rememberScrollState()
+
+    Scaffold(
+        modifier = Modifier
+            .fillMaxSize(),
+        snackbarHost = {
+            SnackbarHost(hostState = snackbarHostState)
+        }
+    ) {
+        Image(
+            painter = painterResource(R.drawable.img_login),
+            contentDescription = null, // 이미지 설명은 필요에 따라 설정하세요.
+            modifier = Modifier
+                .fillMaxSize(),
+            contentScale = ContentScale.Crop
+        )
+
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(20.dp)
+                .verticalScroll(scrollState),
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            Column(
+                Modifier
+                    .weight(1f)
+                    .padding(top = 100.dp),
+                verticalArrangement = Arrangement.Top
+            ) {
+                Icon(
+                    modifier = Modifier.size(160.dp),
+                    painter = painterResource(id = R.drawable.login_logo),
+                    contentDescription = "RunWithMeLogo"
+                )
+            }
+
+            Column(
+                Modifier
+                    .weight(1f)
+                    .padding(bottom = 100.dp)
+                    .widthIn(max = 500.dp), verticalArrangement = Arrangement.Bottom
+            ) {
+                EmailInput(emailState = email)
+
+                VerticalSpacer(16)
+
+                PasswordInput(
+                    passwordState = password,
+                    labelId = stringResource(id = R.string.password),
+                    enabled = true,
+                    passwordVisibility = passwordVisibility
+                )
+
+                VerticalSpacer(16)
+
+                LoginButton {
+                    loginWithEmail(email.value, password.value)
+                }
+
+                VerticalSpacer(16)
+
+                JoinButton {
+                    navController.navigate(BottomNavItem.Home.screenRoute)
+                }
+            }
+        }
     }
 }
