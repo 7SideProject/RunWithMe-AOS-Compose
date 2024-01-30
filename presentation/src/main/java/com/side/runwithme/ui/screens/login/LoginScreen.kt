@@ -173,7 +173,7 @@ fun LoginScreenDesign(
     ) {
         Image(
             painter = painterResource(R.drawable.img_login),
-            contentDescription = null, // 이미지 설명은 필요에 따라 설정하세요.
+            contentDescription = "RunWithMeLoginBackgroundImage",
             modifier = Modifier
                 .fillMaxSize(),
             contentScale = ContentScale.Crop
