@@ -6,6 +6,7 @@
     <string name="password">비밀번호</string>
     <string name="password_confirm">비밀번호 확인</string>
     <string name="login">로그인</string>
+    <string name="kakao_login">카카오 로그인</string>
     <string name="join">회원가입</string>
     <string name="find_password">비밀번호 찾기</string>
     <string name="send_verify_number">인증 번호 전송</string>
@@ -14,6 +15,8 @@
 
     <string name="height">키</string>
     <string name="weight">몸무게</string>
+
+    <string name="email_title">사용할 이메일을 입력해주세요.</string>
 
     <string name="login_success">로그인에 성공했습니다.</string>
     <string name="login_fail">이메일, 비밀번호가 일치하지 않습니다.</string>

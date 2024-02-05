@@ -59,6 +59,7 @@ import com.side.runwithme.MainActivity.Companion.loadingState
 import com.side.runwithme.navigation.BottomNavItem
 import com.side.runwithme.navigation.RunWithMeScreens
 import com.side.runwithme.ui.screens.home.HomeScreen
+import com.side.runwithme.ui.screens.join.JoinStep1Screen
 import com.side.runwithme.ui.screens.login.LoginScreen
 import com.side.runwithme.ui.screens.login.LoginViewModel
 import com.side.runwithme.ui.screens.my_page.MyPageScreen
@@ -147,6 +148,10 @@ fun MyApp() {
                 LoginScreen(navController)
             }
 
+            composable(RunWithMeScreens.JoinScreen.name) {
+                bottomBarState.value = false
+                JoinStep1Screen(navController)
+            }
         }
     }
 }
