@@ -27,6 +27,7 @@ import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.side.runwithme.R
 import com.side.runwithme.components.IntListDropDownMenu
@@ -44,13 +45,13 @@ import com.side.runwithme.utils.passwordValidation
 fun JoinStep3Preview() {
     val navController = rememberNavController()
     RunWithMeTheme {
-        JoinStep3Screen()
+        JoinStep3Screen(navController)
     }
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun JoinStep3Screen() {
+fun JoinStep3Screen(navController: NavController) {
 
     val nickname = remember {
         mutableStateOf("")

@@ -3,7 +3,6 @@ package com.side.runwithme.ui.screens.login
 import android.annotation.SuppressLint
 import android.widget.Toast
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -12,6 +11,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
@@ -21,7 +21,6 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SnackbarHost
@@ -44,7 +43,6 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
@@ -203,15 +201,16 @@ fun LoginScreenDesign(
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Column(
-                Modifier.weight(0.1f),
+                Modifier
+                    .height(160.dp)
+                    .weight(0.1f),
                 verticalArrangement = Arrangement.Center
             ) {
-                Icon(
+                Image(
                     modifier = Modifier
                         .size(160.dp)
                         .weight(1f),
-                    painter = painterResource(id = R.drawable.login_logo),
-                    tint = Color.Black,
+                    painter = painterResource(id = R.drawable.login_logo2),
                     contentDescription = "RunWithMeLogo"
                 )
                 Spacer(
@@ -255,7 +254,7 @@ fun LoginScreenDesign(
                             .weight(0.1f)
                     )
                     Button(
-                        onClick = { navController.navigate(RunWithMeScreens.JoinScreen.name) },
+                        onClick = { navController.navigate(RunWithMeScreens.JoinScreen1.name) },
                         contentPadding = PaddingValues(0.dp),
                         colors = ButtonDefaults.buttonColors(
                             containerColor = Color.Transparent,

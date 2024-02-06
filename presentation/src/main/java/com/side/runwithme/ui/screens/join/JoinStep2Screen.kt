@@ -17,6 +17,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.side.runwithme.R
 import com.side.runwithme.components.MyToolBar
@@ -32,13 +33,13 @@ import com.side.runwithme.utils.passwordValidation
 fun JoinStep2Preview() {
     val navController = rememberNavController()
     RunWithMeTheme {
-        JoinStep2Screen()
+        JoinStep2Screen(navController)
     }
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun JoinStep2Screen() {
+fun JoinStep2Screen(navController: NavController) {
 
     val password = remember {
         mutableStateOf("")

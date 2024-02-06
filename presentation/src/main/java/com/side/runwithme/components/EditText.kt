@@ -108,7 +108,6 @@ fun TextInput(
         singleLine = isSingleLine,
         textStyle = MaterialTheme.typography.bodySmall.copy(color = MaterialTheme.colorScheme.onBackground),
         modifier = modifier
-            .padding(bottom = 10.dp, start = 10.dp, end = 10.dp, top = 10.dp)
             .fillMaxWidth()
             .background(Color.Transparent)
             .focusRequester(focusRequester = focusRequester)

@@ -4,7 +4,6 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.animation.AnimatedVisibility
-import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.animation.slideInVertically
 import androidx.compose.animation.slideOutVertically
 import androidx.compose.foundation.background
@@ -14,13 +13,10 @@ import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.foundation.shape.CornerSize
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FabPosition
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Scaffold
@@ -32,7 +28,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
@@ -54,14 +49,14 @@ import com.airbnb.lottie.compose.LottieCompositionSpec
 import com.airbnb.lottie.compose.LottieConstants
 import com.airbnb.lottie.compose.animateLottieCompositionAsState
 import com.airbnb.lottie.compose.rememberLottieComposition
-import com.google.accompanist.navigation.animation.AnimatedNavHost
 import com.side.runwithme.MainActivity.Companion.loadingState
 import com.side.runwithme.navigation.BottomNavItem
 import com.side.runwithme.navigation.RunWithMeScreens
 import com.side.runwithme.ui.screens.home.HomeScreen
 import com.side.runwithme.ui.screens.join.JoinStep1Screen
+import com.side.runwithme.ui.screens.join.JoinStep2Screen
+import com.side.runwithme.ui.screens.join.JoinStep3Screen
 import com.side.runwithme.ui.screens.login.LoginScreen
-import com.side.runwithme.ui.screens.login.LoginViewModel
 import com.side.runwithme.ui.screens.my_page.MyPageScreen
 import com.side.runwithme.ui.screens.running_list.RunningListScreen
 import com.side.runwithme.ui.theme.MainColor
@@ -148,9 +143,19 @@ fun MyApp() {
                 LoginScreen(navController)
             }
 
-            composable(RunWithMeScreens.JoinScreen.name) {
+            composable(RunWithMeScreens.JoinScreen1.name) {
                 bottomBarState.value = false
                 JoinStep1Screen(navController)
+            }
+
+            composable(RunWithMeScreens.JoinScreen2.name) {
+                bottomBarState.value = false
+                JoinStep2Screen(navController)
+            }
+
+            composable(RunWithMeScreens.JoinScreen3.name) {
+                bottomBarState.value = false
+                JoinStep3Screen(navController)
             }
         }
     }
