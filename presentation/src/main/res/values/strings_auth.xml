@@ -19,6 +19,12 @@
     <string name="join_title">환영합니다!</string>
     <string name="join_email_title">사용할 이메일을 입력해주세요.</string>
 
+    <string name="join_title2">이메일 인증에 성공하였습니다.</string>
+    <string name="join_password_title">사용할 비밀번호를 입력해주세요.</string>
+
+    <string name="join_title3">이제 마지막 단계입니다!</string>
+    <string name="join_detail_title">상세정보를 입력해주세요.</string>
+
     <string name="login_success">로그인에 성공했습니다.</string>
     <string name="login_fail">이메일, 비밀번호가 일치하지 않습니다.</string>
     <string name="login_error">서버 오류입니다. 다시 시작해주세요.</string>

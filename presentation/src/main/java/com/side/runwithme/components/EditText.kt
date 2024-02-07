@@ -96,17 +96,17 @@ fun TextInput(
     TextField(
         value = valueState.value,
         onValueChange = { valueState.value = it },
-        label = labelId?.let { { Text(text = it, style = MaterialTheme.typography.bodySmall) } },
+        label = labelId?.let { { Text(text = it, style = MaterialTheme.typography.bodyMedium) } },
         placeholder = placeholder?.let {
             {
                 Text(
                     text = it,
-                    style = MaterialTheme.typography.bodySmall
+                    style = MaterialTheme.typography.bodyMedium
                 )
             }
         },
         singleLine = isSingleLine,
-        textStyle = MaterialTheme.typography.bodySmall.copy(color = MaterialTheme.colorScheme.onBackground),
+        textStyle = MaterialTheme.typography.bodyMedium.copy(color = MaterialTheme.colorScheme.onBackground),
         modifier = modifier
             .fillMaxWidth()
             .background(Color.Transparent)
@@ -139,9 +139,9 @@ fun EmailInput(
     TextField(
         value = emailState.value,
         onValueChange = { emailState.value = it },
-        label = { Text(text = labelId, style = MaterialTheme.typography.bodySmall) },
+        label = { Text(text = labelId, style = MaterialTheme.typography.bodyMedium) },
         singleLine = isSingleLine,
-        textStyle = MaterialTheme.typography.bodySmall.copy(color = MaterialTheme.colorScheme.onBackground),
+        textStyle = MaterialTheme.typography.bodyMedium.copy(color = MaterialTheme.colorScheme.onBackground),
         modifier = modifier
             .fillMaxWidth()
             .background(Color.Transparent)
@@ -181,9 +181,9 @@ fun PasswordInput(
         onValueChange = {
             passwordState.value = it
         },
-        label = { Text(text = labelId, style = MaterialTheme.typography.bodySmall) },
+        label = { Text(text = labelId, style = MaterialTheme.typography.bodyMedium) },
         singleLine = true,
-        textStyle = MaterialTheme.typography.bodySmall.copy(color = MaterialTheme.colorScheme.onBackground),
+        textStyle = MaterialTheme.typography.bodyMedium.copy(color = MaterialTheme.colorScheme.onBackground),
         modifier = modifier
             .fillMaxWidth()
             .background(Color.Transparent)

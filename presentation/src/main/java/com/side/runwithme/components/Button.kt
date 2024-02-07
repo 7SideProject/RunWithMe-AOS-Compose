@@ -41,6 +41,7 @@ fun ButtonPreview() {
     RunWithMeTheme {
         Column {
             RoundedWeakButton(label = "Button")
+            RoundedStrongButton(label = "로그인")
             RoundedKakaoButton(label = "카카오 로그인")
         }
     }
@@ -74,7 +75,7 @@ fun RoundedStrongButton(
         ) {
             Text(
                 text = label,
-                style = MaterialTheme.typography.titleSmall,
+                style = MaterialTheme.typography.titleMedium,
                 color = Color.White
             )
         }
@@ -110,7 +111,7 @@ fun RoundedWeakButton(
         ) {
             Text(
                 text = label,
-                style = MaterialTheme.typography.titleSmall,
+                style = MaterialTheme.typography.titleMedium,
                 color = Grey
             )
         }
@@ -191,7 +192,7 @@ fun RoundedKakaoButton(
                 modifier = Modifier.weight(1f),
                 textAlign = TextAlign.Center,
                 text = label,
-                style = MaterialTheme.typography.titleSmall,
+                style = MaterialTheme.typography.titleMedium,
                 color = Black
             )
             Spacer(modifier = Modifier.weight(0.1f))

@@ -264,7 +264,7 @@ fun LoginScreenDesign(
                         Text(
                             text = stringResource(id = R.string.join),
                             color = Color.White,
-                            style = MaterialTheme.typography.bodySmall,
+                            style = MaterialTheme.typography.bodyMedium,
                             textAlign = TextAlign.End,
                             modifier = Modifier
                                 .fillMaxHeight()

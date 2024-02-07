@@ -103,16 +103,18 @@ fun JoinStep1Screen(
 
                 Text(
                     text = stringResource(id = R.string.join_title),
-                    style = MaterialTheme.typography.titleMedium
+                    style = MaterialTheme.typography.titleLarge
                 )
 
                 VerticalSpacer(16)
 
                 Text(
                     text = stringResource(id = R.string.join_email_title),
-                    style = MaterialTheme.typography.titleSmall
+                    style = MaterialTheme.typography.titleMedium
                 )
+
                 VerticalSpacer(16)
+
                 Column(
                     Modifier.widthIn(max = 500.dp),
                     horizontalAlignment = Alignment.CenterHorizontally
@@ -136,7 +138,7 @@ fun JoinStep1Screen(
                     if (isClickSendButton.value) {
                         Text(
                             text = stringResource(id = R.string.verify_number),
-                            style = MaterialTheme.typography.titleSmall
+                            style = MaterialTheme.typography.titleMedium
                         )
 
                         VerticalSpacer(16)

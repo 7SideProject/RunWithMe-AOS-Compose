@@ -15,6 +15,7 @@ import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.PlayArrow
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
@@ -59,22 +60,13 @@ fun MyToolBar(
     onBackClick: () -> Unit = {}
 ) {
     TopAppBar(
-        modifier = Modifier.fillMaxWidth(),
         title = {
-            Row(
-                Modifier.fillMaxWidth(),
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                Icon(imageVector = Icons.Default.ArrowBack,
-                    contentDescription = "BackButton",
-                    modifier = Modifier.clickable {
-                        onBackClick.invoke()
-                    }
-                )
-                Spacer(modifier = Modifier.width(8.dp))
-                Text(text = title, style = MaterialTheme.typography.headlineSmall)
+            Text(text = title)
+        },
+        navigationIcon = {
+            IconButton(onClick = { onBackClick.invoke() }) {
+                Icon(Icons.Default.ArrowBack, contentDescription = "BackButton")
             }
-
         },
         colors = TopAppBarDefaults.mediumTopAppBarColors()
     )
@@ -89,38 +81,19 @@ fun MyToolBarWithIcon(
     onIconClick: () -> Unit,
 ) {
     TopAppBar(
-        modifier = Modifier.fillMaxWidth(),
         title = {
-            Icon(imageVector = Icons.Default.ArrowBack,
-                contentDescription = "BackButton",
-                modifier = Modifier.clickable {
-                    onBackClick.invoke()
-                }
-            )
-
-            Row(
-                Modifier
-                    .fillMaxWidth()
-                    .padding(start = 12.dp),
-                horizontalArrangement = Arrangement.SpaceBetween,
-                verticalAlignment = Alignment.CenterVertically,
-
-                ) {
-                Text(text = title, style = MaterialTheme.typography.headlineSmall)
-
-                Icon(
-                    imageVector = icon,
-                    contentDescription = "IconButton",
-                    modifier = Modifier
-                        .padding(end = 12.dp)
-                        .clickable {
-                            onIconClick.invoke()
-                        }
-                        .size(32.dp)
-                )
-
+            Text(text = title)
+        },
+        navigationIcon = {
+            IconButton(onClick = { onBackClick.invoke() }) {
+                Icon(Icons.Default.ArrowBack, contentDescription = "BackButton")
             }
-
+        },
+        actions = {
+            // 액션 버튼들
+            IconButton(onClick = { onIconClick.invoke() }) {
+                Icon(icon, contentDescription = "IconButton")
+            }
         },
         colors = TopAppBarDefaults.mediumTopAppBarColors()
     )
