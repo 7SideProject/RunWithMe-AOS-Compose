@@ -119,7 +119,7 @@ fun JoinStep2Screen(navController: NavController) {
                 enabled = true
             )
 
-            Spacer(Modifier.weight(1f))
+            VerticalSpacer(16)
 
 //            if (passwordValidation(
 //                    password.value,
