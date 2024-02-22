@@ -32,19 +32,19 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.side.runwithme.R
-import com.side.runwithme.components.EmailInput
-import com.side.runwithme.components.HorizontalSpacer
-import com.side.runwithme.components.MyToolBar
-import com.side.runwithme.components.TextInput
-import com.side.runwithme.components.VerticalSpacer
+import com.side.runwithme.designsystem.components.EmailInput
+import com.side.runwithme.designsystem.components.HorizontalSpacer
+import com.side.runwithme.designsystem.components.MyToolBar
+import com.side.runwithme.designsystem.components.TextInput
+import com.side.runwithme.designsystem.components.VerticalSpacer
 import com.side.runwithme.navigation.RunWithMeScreens
-import com.side.runwithme.ui.theme.RunWithMeTheme
+import com.side.runwithme.designsystem.theme.RunWithMeTheme
 
 @Preview(showBackground = true)
 @Composable
 fun JoinStep1Preview() {
     val navController = rememberNavController()
-    RunWithMeTheme {
+    com.side.runwithme.designsystem.theme.RunWithMeTheme {
         JoinStep1Screen(navController)
     }
 }
@@ -72,7 +72,7 @@ fun JoinStep1Screen(
 
     Scaffold(
         topBar = {
-            MyToolBar(title = stringResource(id = R.string.join),
+            com.side.runwithme.designsystem.components.MyToolBar(title = stringResource(id = R.string.join),
                 onBackClick = {
                     navController.navigateUp()
                 }
@@ -99,27 +99,27 @@ fun JoinStep1Screen(
                     contentDescription = "RunWithMeLogo"
                 )
 
-                VerticalSpacer(16)
+                com.side.runwithme.designsystem.components.VerticalSpacer(16)
 
                 Text(
                     text = stringResource(id = R.string.join_title),
                     style = MaterialTheme.typography.titleLarge
                 )
 
-                VerticalSpacer(16)
+                com.side.runwithme.designsystem.components.VerticalSpacer(16)
 
                 Text(
                     text = stringResource(id = R.string.join_email_title),
                     style = MaterialTheme.typography.titleMedium
                 )
 
-                VerticalSpacer(16)
+                com.side.runwithme.designsystem.components.VerticalSpacer(16)
 
                 Column(
                     Modifier.widthIn(max = 500.dp),
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
-                    EmailInput(
+                    com.side.runwithme.designsystem.components.EmailInput(
                         emailState = email,
                         imeAction = ImeAction.Done,
                         onAction = KeyboardActions(onDone = {
@@ -127,13 +127,13 @@ fun JoinStep1Screen(
                         })
                     )
 
-                    VerticalSpacer(16)
+                    com.side.runwithme.designsystem.components.VerticalSpacer(16)
 
                     OutlinedButton(onClick = { isClickSendButton.value = true }) {
                         Text(text = stringResource(id = R.string.send_verify_number))
                     }
 
-                    VerticalSpacer(32)
+                    com.side.runwithme.designsystem.components.VerticalSpacer(32)
 
                     if (isClickSendButton.value) {
                         Text(
@@ -141,13 +141,13 @@ fun JoinStep1Screen(
                             style = MaterialTheme.typography.titleMedium
                         )
 
-                        VerticalSpacer(16)
+                        com.side.runwithme.designsystem.components.VerticalSpacer(16)
 
                         Row(
                             modifier = Modifier.fillMaxWidth(),
                             verticalAlignment = Alignment.CenterVertically
                         ) {
-                            TextInput(
+                            com.side.runwithme.designsystem.components.TextInput(
                                 modifier = Modifier.weight(1f),
                                 valueState = verifyNumber,
                                 labelId = stringResource(id = R.string.verify),
@@ -160,7 +160,7 @@ fun JoinStep1Screen(
                                 })
                             )
 
-                            HorizontalSpacer(16)
+                            com.side.runwithme.designsystem.components.HorizontalSpacer(16)
 
                             OutlinedButton(
                                 onClick = { navController.navigate(RunWithMeScreens.JoinScreen2.name) }) {

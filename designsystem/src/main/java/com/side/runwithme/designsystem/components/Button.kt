@@ -1,4 +1,4 @@
-package com.side.runwithme.components
+package com.side.runwithme.designsystem.components
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.clickable
@@ -27,12 +27,12 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.side.runwithme.R
-import com.side.runwithme.ui.theme.Black
-import com.side.runwithme.ui.theme.Grey
-import com.side.runwithme.ui.theme.MainColor
-import com.side.runwithme.ui.theme.RunWithMeTheme
-import com.side.runwithme.ui.theme.White
+import com.side.runwithme.designsystem.R
+import com.side.runwithme.designsystem.theme.Black
+import com.side.runwithme.designsystem.theme.Grey
+import com.side.runwithme.designsystem.theme.MainColor
+import com.side.runwithme.designsystem.theme.RunWithMeTheme
+import com.side.runwithme.designsystem.theme.White
 
 
 @Preview(showBackground = true)

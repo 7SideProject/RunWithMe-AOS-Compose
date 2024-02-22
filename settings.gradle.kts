@@ -17,3 +17,4 @@ rootProject.name = "RunWithMe(Compose)"
 include(":presentation")
 include(":domain")
 include(":data")
+include(":designsystem")

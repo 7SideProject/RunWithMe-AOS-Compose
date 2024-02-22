@@ -1,4 +1,4 @@
-package com.side.runwithme.components
+package com.side.runwithme.designsystem.components
 
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height

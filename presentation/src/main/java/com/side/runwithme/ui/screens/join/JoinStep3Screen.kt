@@ -38,13 +38,13 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.side.runwithme.R
-import com.side.runwithme.components.IntListDropDownMenu
-import com.side.runwithme.components.MyToolBar
-import com.side.runwithme.components.RoundedStrongButton
-import com.side.runwithme.components.TextInput
-import com.side.runwithme.components.VerticalSpacer
+import com.side.runwithme.designsystem.components.IntListDropDownMenu
+import com.side.runwithme.designsystem.components.MyToolBar
+import com.side.runwithme.designsystem.components.RoundedStrongButton
+import com.side.runwithme.designsystem.components.TextInput
+import com.side.runwithme.designsystem.components.VerticalSpacer
 import com.side.runwithme.navigation.RunWithMeScreens
-import com.side.runwithme.ui.theme.RunWithMeTheme
+import com.side.runwithme.designsystem.theme.RunWithMeTheme
 import com.side.runwithme.utils.PasswordVerificationType
 import com.side.runwithme.utils.matchesNickNameRule
 import com.side.runwithme.utils.passwordValidation
@@ -53,7 +53,7 @@ import com.side.runwithme.utils.passwordValidation
 @Composable
 fun JoinStep3Preview() {
     val navController = rememberNavController()
-    RunWithMeTheme {
+    com.side.runwithme.designsystem.theme.RunWithMeTheme {
         JoinStep3Screen(navController)
     }
 }
@@ -70,7 +70,7 @@ fun JoinStep3Screen(navController: NavController) {
 
     Scaffold(
         topBar = {
-            MyToolBar(title = stringResource(id = R.string.join),
+            com.side.runwithme.designsystem.components.MyToolBar(title = stringResource(id = R.string.join),
                 onBackClick = {
                     navController.navigateUp()
                 }
@@ -97,23 +97,23 @@ fun JoinStep3Screen(navController: NavController) {
                 contentDescription = "RunWithMeLogo"
             )
 
-            VerticalSpacer(16)
+            com.side.runwithme.designsystem.components.VerticalSpacer(16)
 
             Text(
                 text = stringResource(id = R.string.join_title3),
                 style = MaterialTheme.typography.titleLarge
             )
 
-            VerticalSpacer(16)
+            com.side.runwithme.designsystem.components.VerticalSpacer(16)
 
             Text(
                 text = stringResource(id = R.string.join_detail_title),
                 style = MaterialTheme.typography.titleMedium
             )
 
-            VerticalSpacer(16)
+            com.side.runwithme.designsystem.components.VerticalSpacer(16)
 
-            TextInput(
+            com.side.runwithme.designsystem.components.TextInput(
                 valueState = nickname,
                 labelId = stringResource(id = R.string.nickname),
                 enabled = true,
@@ -121,11 +121,11 @@ fun JoinStep3Screen(navController: NavController) {
                 imeAction = ImeAction.Next
             )
 
-            VerticalSpacer(16)
+            com.side.runwithme.designsystem.components.VerticalSpacer(16)
 
             HeightDropDownMenu()
 
-            VerticalSpacer(16)
+            com.side.runwithme.designsystem.components.VerticalSpacer(16)
 
             WeightDropDownMenu()
 
@@ -152,7 +152,11 @@ fun HeightDropDownMenu() {
         mutableStateOf(43)
     }
 
-    IntListDropDownMenu(expanded = expanded, list = heightList, selectedIndex = selectedHeightIndex)
+    com.side.runwithme.designsystem.components.IntListDropDownMenu(
+        expanded = expanded,
+        list = heightList,
+        selectedIndex = selectedHeightIndex
+    )
 }
 
 @Composable
@@ -166,5 +170,9 @@ fun WeightDropDownMenu() {
         mutableStateOf(40)
     }
 
-    IntListDropDownMenu(expanded = expanded, list = weightList, selectedIndex = selectedWeightIndex)
+    com.side.runwithme.designsystem.components.IntListDropDownMenu(
+        expanded = expanded,
+        list = weightList,
+        selectedIndex = selectedWeightIndex
+    )
 }

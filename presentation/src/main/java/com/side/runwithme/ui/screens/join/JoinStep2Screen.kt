@@ -28,12 +28,12 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.side.runwithme.R
-import com.side.runwithme.components.MyToolBar
-import com.side.runwithme.components.PasswordInput
-import com.side.runwithme.components.RoundedStrongButton
-import com.side.runwithme.components.VerticalSpacer
+import com.side.runwithme.designsystem.components.MyToolBar
+import com.side.runwithme.designsystem.components.PasswordInput
+import com.side.runwithme.designsystem.components.RoundedStrongButton
+import com.side.runwithme.designsystem.components.VerticalSpacer
 import com.side.runwithme.navigation.RunWithMeScreens
-import com.side.runwithme.ui.theme.RunWithMeTheme
+import com.side.runwithme.designsystem.theme.RunWithMeTheme
 import com.side.runwithme.utils.PasswordVerificationType
 import com.side.runwithme.utils.passwordValidation
 
@@ -41,7 +41,7 @@ import com.side.runwithme.utils.passwordValidation
 @Composable
 fun JoinStep2Preview() {
     val navController = rememberNavController()
-    RunWithMeTheme {
+    com.side.runwithme.designsystem.theme.RunWithMeTheme {
         JoinStep2Screen(navController)
     }
 }
@@ -62,7 +62,7 @@ fun JoinStep2Screen(navController: NavController) {
 
     Scaffold(
         topBar = {
-            MyToolBar(title = stringResource(id = R.string.join),
+            com.side.runwithme.designsystem.components.MyToolBar(title = stringResource(id = R.string.join),
                 onBackClick = {
                     navController.navigateUp()
                 }
@@ -89,31 +89,31 @@ fun JoinStep2Screen(navController: NavController) {
                 contentDescription = "RunWithMeLogo"
             )
 
-            VerticalSpacer(16)
+            com.side.runwithme.designsystem.components.VerticalSpacer(16)
 
             Text(
                 text = stringResource(id = R.string.join_title2),
                 style = MaterialTheme.typography.titleLarge
             )
 
-            VerticalSpacer(16)
+            com.side.runwithme.designsystem.components.VerticalSpacer(16)
 
             Text(
                 text = stringResource(id = R.string.join_password_title),
                 style = MaterialTheme.typography.titleMedium
             )
 
-            VerticalSpacer(16)
+            com.side.runwithme.designsystem.components.VerticalSpacer(16)
 
-            PasswordInput(
+            com.side.runwithme.designsystem.components.PasswordInput(
                 passwordState = password,
                 labelId = stringResource(id = R.string.password),
                 enabled = true
             )
 
-            VerticalSpacer(16)
+            com.side.runwithme.designsystem.components.VerticalSpacer(16)
 
-            PasswordInput(
+            com.side.runwithme.designsystem.components.PasswordInput(
                 passwordState = passwordConfirm,
                 labelId = stringResource(id = R.string.password_confirm),
                 enabled = true

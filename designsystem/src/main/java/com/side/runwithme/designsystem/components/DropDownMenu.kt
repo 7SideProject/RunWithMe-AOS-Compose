@@ -1,4 +1,4 @@
-package com.side.runwithme.components
+package com.side.runwithme.designsystem.components
 
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material.icons.Icons
@@ -16,7 +16,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
-import com.side.runwithme.R
+import com.side.runwithme.designsystem.R
 
 @Preview
 @Composable

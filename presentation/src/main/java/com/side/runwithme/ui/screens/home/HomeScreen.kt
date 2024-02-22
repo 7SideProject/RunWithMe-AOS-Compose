@@ -44,15 +44,15 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.side.runwithme.R
 import com.side.runwithme.ui.screens.login.LoginScreen
-import com.side.runwithme.ui.theme.Black
-import com.side.runwithme.ui.theme.MainBlack
-import com.side.runwithme.ui.theme.RunWithMeTheme
+import com.side.runwithme.designsystem.theme.Black
+import com.side.runwithme.designsystem.theme.MainBlack
+import com.side.runwithme.designsystem.theme.RunWithMeTheme
 
 @Preview(showBackground = true)
 @Composable
 fun HomePreview(){
     val navController = rememberNavController()
-    RunWithMeTheme {
+    com.side.runwithme.designsystem.theme.RunWithMeTheme {
         HomeScreen(navController)
     }
 }
@@ -125,7 +125,7 @@ fun CardViewScreen(
             .fillMaxWidth()
             .wrapContentHeight()
             .clip(shape = cardRoundedShpae)
-            .border(width = 1.dp, color = MainBlack, shape = cardRoundedShpae)
+            .border(width = 1.dp, color = com.side.runwithme.designsystem.theme.MainBlack, shape = cardRoundedShpae)
             .clickable {
                 onClick.invoke()
             }

@@ -1,4 +1,4 @@
-package com.side.runwithme.ui.theme
+package com.side.runwithme.designsystem.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle
