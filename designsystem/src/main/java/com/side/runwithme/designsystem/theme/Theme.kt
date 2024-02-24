@@ -1,4 +1,4 @@
-package com.side.runwithme.ui.theme
+package com.side.runwithme.designsystem.theme
 
 import android.app.Activity
 import android.os.Build

@@ -1,20 +1,17 @@
-package com.side.runwithme.components
+package com.side.runwithme.designsystem.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material.icons.Icons
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
-import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.getValue
@@ -26,22 +23,18 @@ import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.focus.onFocusChanged
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
-import com.side.runwithme.R
-import com.side.runwithme.ui.theme.Grey
-import com.side.runwithme.ui.theme.MainGrey
-import com.side.runwithme.ui.theme.RunWithMeTheme
+import com.side.runwithme.designsystem.R
+import com.side.runwithme.designsystem.theme.MainGrey
+import com.side.runwithme.designsystem.theme.RunWithMeTheme
 
 @Preview(showBackground = true)
 @Composable
@@ -95,19 +88,18 @@ fun TextInput(
     TextField(
         value = valueState.value,
         onValueChange = { valueState.value = it },
-        label = labelId?.let { { Text(text = it, style = MaterialTheme.typography.bodySmall) } },
+        label = labelId?.let { { Text(text = it, style = MaterialTheme.typography.bodyMedium) } },
         placeholder = placeholder?.let {
             {
                 Text(
                     text = it,
-                    style = MaterialTheme.typography.bodySmall
+                    style = MaterialTheme.typography.bodyMedium
                 )
             }
         },
         singleLine = isSingleLine,
-        textStyle = MaterialTheme.typography.bodySmall.copy(color = MaterialTheme.colorScheme.onBackground),
+        textStyle = MaterialTheme.typography.bodyMedium.copy(color = MaterialTheme.colorScheme.onBackground),
         modifier = modifier
-            .padding(bottom = 10.dp, start = 10.dp, end = 10.dp, top = 10.dp)
             .fillMaxWidth()
             .background(Color.Transparent)
             .focusRequester(focusRequester = focusRequester)
@@ -139,9 +131,9 @@ fun EmailInput(
     TextField(
         value = emailState.value,
         onValueChange = { emailState.value = it },
-        label = { Text(text = labelId, style = MaterialTheme.typography.bodySmall) },
+        label = { Text(text = labelId, style = MaterialTheme.typography.bodyMedium) },
         singleLine = isSingleLine,
-        textStyle = MaterialTheme.typography.bodySmall.copy(color = MaterialTheme.colorScheme.onBackground),
+        textStyle = MaterialTheme.typography.bodyMedium.copy(color = MaterialTheme.colorScheme.onBackground),
         modifier = modifier
             .fillMaxWidth()
             .background(Color.Transparent)
@@ -181,9 +173,9 @@ fun PasswordInput(
         onValueChange = {
             passwordState.value = it
         },
-        label = { Text(text = labelId, style = MaterialTheme.typography.bodySmall) },
+        label = { Text(text = labelId, style = MaterialTheme.typography.bodyMedium) },
         singleLine = true,
-        textStyle = MaterialTheme.typography.bodySmall.copy(color = MaterialTheme.colorScheme.onBackground),
+        textStyle = MaterialTheme.typography.bodyMedium.copy(color = MaterialTheme.colorScheme.onBackground),
         modifier = modifier
             .fillMaxWidth()
             .background(Color.Transparent)

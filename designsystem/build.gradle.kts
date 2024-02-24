@@ -1,18 +1,15 @@
 @Suppress("DSL_SCOPE_VIOLATION") // TODO: Remove once KTIJ-19369 is fixed
 plugins {
-    alias(libs.plugins.com.android.library)
     alias(libs.plugins.org.jetbrains.kotlin.android)
-    alias(libs.plugins.com.google.dagger.hilt.android)
-    id("kotlin-kapt")
+    alias(libs.plugins.com.android.library)
 }
 
 android {
-    namespace = "com.side.data"
+    namespace = "com.side.runwithme.designsystem"
     compileSdk = libs.versions.compileSdk.get().toInt()
 
     defaultConfig {
         minSdk = libs.versions.minSdk.get().toInt()
-
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
     }
@@ -26,33 +23,39 @@ android {
             )
         }
     }
+
+    buildFeatures {
+        compose = true
+    }
+
+    composeOptions {
+        kotlinCompilerExtensionVersion = libs.versions.compose.compiler.version.get()
+    }
+
     compileOptions {
         sourceCompatibility = JavaVersion.toVersion(libs.versions.java.compatibility.get().toInt())
         targetCompatibility = JavaVersion.toVersion(libs.versions.java.compatibility.get().toInt())
     }
+
+    kotlinOptions {
+        jvmTarget = libs.versions.kotlin.jvm.target.get()
+    }
 }
 
 dependencies {
-    implementation(project(":domain"))
-
     implementation(libs.core.ktx)
     implementation(libs.appcompat)
-    implementation(libs.material)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.test.ext.junit)
     androidTestImplementation(libs.espresso.core)
 
-    // retrofit
-    implementation(libs.retrofit)
-
-    // okhttp
-    implementation("com.squareup.okhttp3:okhttp:4.10.0")
-    implementation("com.squareup.okhttp3:logging-interceptor:4.10.0")
-
-    // Dagger Hilt
-    implementation("androidx.hilt:hilt-navigation-compose:1.0.0")
-
-    implementation(libs.hilt.android)
-    kapt(libs.hilt.android.compiler)
+    // Compose
+    implementation(platform(libs.compose.bom))
+    debugImplementation(libs.compose.ui.tooling)
+    implementation(libs.compose.ui)
+    implementation(libs.compose.material3)
+    implementation(libs.compose.ui.tooling.preview)
+    implementation(libs.activity.compose)
+    implementation(libs.lifecycle.runtime.compose)
 }

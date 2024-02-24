@@ -1,5 +1,5 @@
 package com.side.runwithme.navigation
 
 enum class RunWithMeScreens {
-    LoginScreen,
+    LoginScreen, JoinScreen1, JoinScreen2, JoinScreen3,
 }

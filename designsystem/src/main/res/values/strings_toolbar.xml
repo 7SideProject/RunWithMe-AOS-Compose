@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="home">홈</string>
+    <string name="running_list">러닝하기</string>
+    <string name="my_page">내 정보</string>
+    <string name="my_challenge_list">내 챌린지 리스트</string>
+    <string name="recruit_challenge_list">모집 중인 챌린지 리스트</string>
+
+</resources>
