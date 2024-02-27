@@ -47,14 +47,14 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.side.runwithme.R
-import com.side.runwithme.components.EmailInput
-import com.side.runwithme.components.PasswordInput
-import com.side.runwithme.components.RoundedKakaoButton
-import com.side.runwithme.components.RoundedStrongButton
-import com.side.runwithme.components.VerticalSpacer
+import com.side.runwithme.designsystem.components.EmailInput
+import com.side.runwithme.designsystem.components.PasswordInput
+import com.side.runwithme.designsystem.components.RoundedKakaoButton
+import com.side.runwithme.designsystem.components.RoundedStrongButton
+import com.side.runwithme.designsystem.components.VerticalSpacer
 import com.side.runwithme.navigation.BottomNavItem
 import com.side.runwithme.navigation.RunWithMeScreens
-import com.side.runwithme.ui.theme.RunWithMeTheme
+import com.side.runwithme.designsystem.theme.RunWithMeTheme
 import com.side.runwithme.utils.ResponseCodeStatus
 import com.side.runwithme.viewmodel.EventViewModel
 import kotlinx.coroutines.CoroutineScope
@@ -76,7 +76,7 @@ import kotlinx.coroutines.launch
 fun PreviewLoginScreenDesign() {
     val snackbarHostState = remember { SnackbarHostState() }
     val navController = rememberNavController()
-    RunWithMeTheme {
+    com.side.runwithme.designsystem.theme.RunWithMeTheme {
         LoginScreenDesign(snackbarHostState, navController) { _, _ -> }
     }
 }
@@ -134,7 +134,7 @@ fun LoginScreen(
 
 @Composable
 fun LoginButton(onClick: () -> Unit) {
-    RoundedStrongButton(
+    com.side.runwithme.designsystem.components.RoundedStrongButton(
         stringResource(id = R.string.login)
     ) {
         onClick.invoke()
@@ -143,7 +143,7 @@ fun LoginButton(onClick: () -> Unit) {
 
 @Composable
 fun KakaoLoginButton(onClick: () -> Unit) {
-    RoundedKakaoButton(
+    com.side.runwithme.designsystem.components.RoundedKakaoButton(
         stringResource(id = R.string.kakao_login)
     ) {
         onClick.invoke()
@@ -224,24 +224,24 @@ fun LoginScreenDesign(
                 Modifier.widthIn(max = 500.dp),
                 verticalArrangement = Arrangement.Bottom
             ) {
-                EmailInput(emailState = email)
+                com.side.runwithme.designsystem.components.EmailInput(emailState = email)
 
-                VerticalSpacer(16)
+                com.side.runwithme.designsystem.components.VerticalSpacer(16)
 
-                PasswordInput(
+                com.side.runwithme.designsystem.components.PasswordInput(
                     passwordState = password,
                     labelId = stringResource(id = R.string.password),
                     enabled = true,
                     passwordVisibility = passwordVisibility
                 )
 
-                VerticalSpacer(16)
+                com.side.runwithme.designsystem.components.VerticalSpacer(16)
 
                 LoginButton {
                     loginWithEmail(email.value, password.value)
                 }
 
-                VerticalSpacer(8)
+                com.side.runwithme.designsystem.components.VerticalSpacer(8)
 
                 Row(
                     modifier = Modifier
@@ -274,13 +274,13 @@ fun LoginScreenDesign(
                     }
                 }
 
-                VerticalSpacer(32)
+                com.side.runwithme.designsystem.components.VerticalSpacer(32)
 
                 KakaoLoginButton {
                     navController.navigate(BottomNavItem.Home.screenRoute)
                 }
 
-                VerticalSpacer(64)
+                com.side.runwithme.designsystem.components.VerticalSpacer(64)
             }
         }
     }

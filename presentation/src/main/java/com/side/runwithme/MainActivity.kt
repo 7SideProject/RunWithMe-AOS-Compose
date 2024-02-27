@@ -59,15 +59,15 @@ import com.side.runwithme.ui.screens.join.JoinStep3Screen
 import com.side.runwithme.ui.screens.login.LoginScreen
 import com.side.runwithme.ui.screens.my_page.MyPageScreen
 import com.side.runwithme.ui.screens.running_list.RunningListScreen
-import com.side.runwithme.ui.theme.MainColor
-import com.side.runwithme.ui.theme.RunWithMeTheme
-import com.side.runwithme.ui.theme.White
+import com.side.runwithme.designsystem.theme.MainColor
+import com.side.runwithme.designsystem.theme.RunWithMeTheme
+import com.side.runwithme.designsystem.theme.White
 import dagger.hilt.android.AndroidEntryPoint
 
 @Preview(showBackground = true)
 @Composable
 fun MainPreview() {
-    RunWithMeTheme {
+    com.side.runwithme.designsystem.theme.RunWithMeTheme {
         MyApp()
     }
 }
@@ -83,7 +83,7 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            RunWithMeTheme {
+            com.side.runwithme.designsystem.theme.RunWithMeTheme {
                 MyApp()
             }
         }
@@ -252,7 +252,7 @@ fun RunningListFloatingButton(navController: NavController) {
             onClick = {
                 navController.navigate(BottomNavItem.RunningList.screenRoute)
             },
-            containerColor = MainColor,
+            containerColor = com.side.runwithme.designsystem.theme.MainColor,
             shape = CircleShape,
             modifier = Modifier
                 .align(Alignment.Center)
@@ -263,7 +263,7 @@ fun RunningListFloatingButton(navController: NavController) {
                 modifier = Modifier
                     .size(56.dp),
                 painter = painterResource(id = R.drawable.run),
-                tint = White,
+                tint = com.side.runwithme.designsystem.theme.White,
                 contentDescription = stringResource(id = R.string.running_list)
             )
         }
