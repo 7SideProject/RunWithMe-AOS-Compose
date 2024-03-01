@@ -78,7 +78,7 @@ dependencies {
     debugImplementation(libs.compose.ui.tooling)
 
     // lifecycle
-    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.2")
+    implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.lifecycle.runtime.compose)
     implementation(libs.lifecycle.viewmodel.compose)
 
@@ -86,26 +86,26 @@ dependencies {
     implementation(libs.navigation.compose)
 
     // navigation animation
-    implementation("com.google.accompanist:accompanist-navigation-animation:0.21.1-beta")
+    implementation(libs.accompanist.navigation.animation)
 
     // retrofit
     implementation(libs.retrofit)
 
     // okhttp
-    implementation("com.squareup.okhttp3:okhttp:4.10.0")
-    implementation("com.squareup.okhttp3:logging-interceptor:4.10.0")
+    implementation(libs.okhttp)
+    implementation(libs.logging.interceptor)
 
     // Dagger Hilt
-    implementation("androidx.hilt:hilt-navigation-compose:1.1.0")
+    implementation(libs.androidx.hilt.navigation.compose)
     implementation(libs.hilt.android)
     kapt(libs.hilt.android.compiler)
 
     // lottie
-    implementation("com.airbnb.android:lottie-compose:5.2.0")
+    implementation(libs.lottie.compose)
 
     // Converter ( JSON 타입 결과를 객체로 매핑 )
-    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+    implementation(libs.converter.gson)
 
     // coroutines
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.0-RC")
+    implementation(libs.kotlinx.coroutines.core)
 }

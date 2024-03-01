@@ -11,11 +11,11 @@ java {
 
 dependencies {
     // Dagger Hilt
-    implementation("com.google.dagger:hilt-core:2.48")
+    implementation(libs.hilt.core)
 
     // Converter ( JSON 타입 결과를 객체로 매핑 )
-    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+    implementation(libs.converter.gson)
 
     // coroutines
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.0-RC")
+    implementation(libs.kotlinx.coroutines.core)
 }

@@ -54,7 +54,6 @@ import com.side.runwithme.designsystem.components.RoundedStrongButton
 import com.side.runwithme.designsystem.components.VerticalSpacer
 import com.side.runwithme.navigation.BottomNavItem
 import com.side.runwithme.navigation.RunWithMeScreens
-import com.side.runwithme.designsystem.theme.RunWithMeTheme
 import com.side.runwithme.utils.ResponseCodeStatus
 import com.side.runwithme.viewmodel.EventViewModel
 import kotlinx.coroutines.CoroutineScope
@@ -134,7 +133,7 @@ fun LoginScreen(
 
 @Composable
 fun LoginButton(onClick: () -> Unit) {
-    com.side.runwithme.designsystem.components.RoundedStrongButton(
+    RoundedStrongButton(
         stringResource(id = R.string.login)
     ) {
         onClick.invoke()
@@ -143,7 +142,7 @@ fun LoginButton(onClick: () -> Unit) {
 
 @Composable
 fun KakaoLoginButton(onClick: () -> Unit) {
-    com.side.runwithme.designsystem.components.RoundedKakaoButton(
+    RoundedKakaoButton(
         stringResource(id = R.string.kakao_login)
     ) {
         onClick.invoke()
@@ -157,7 +156,6 @@ fun showSnackBar(scope: CoroutineScope, snackbarHostState: SnackbarHostState, ms
 }
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun LoginScreenDesign(
     snackbarHostState: SnackbarHostState,
@@ -224,24 +222,24 @@ fun LoginScreenDesign(
                 Modifier.widthIn(max = 500.dp),
                 verticalArrangement = Arrangement.Bottom
             ) {
-                com.side.runwithme.designsystem.components.EmailInput(emailState = email)
+                EmailInput(emailState = email)
 
-                com.side.runwithme.designsystem.components.VerticalSpacer(16)
+                VerticalSpacer(16)
 
-                com.side.runwithme.designsystem.components.PasswordInput(
+                PasswordInput(
                     passwordState = password,
                     labelId = stringResource(id = R.string.password),
                     enabled = true,
                     passwordVisibility = passwordVisibility
                 )
 
-                com.side.runwithme.designsystem.components.VerticalSpacer(16)
+                VerticalSpacer(16)
 
                 LoginButton {
                     loginWithEmail(email.value, password.value)
                 }
 
-                com.side.runwithme.designsystem.components.VerticalSpacer(8)
+                VerticalSpacer(8)
 
                 Row(
                     modifier = Modifier
@@ -274,13 +272,13 @@ fun LoginScreenDesign(
                     }
                 }
 
-                com.side.runwithme.designsystem.components.VerticalSpacer(32)
+                VerticalSpacer(32)
 
                 KakaoLoginButton {
                     navController.navigate(BottomNavItem.Home.screenRoute)
                 }
 
-                com.side.runwithme.designsystem.components.VerticalSpacer(64)
+                VerticalSpacer(64)
             }
         }
     }
