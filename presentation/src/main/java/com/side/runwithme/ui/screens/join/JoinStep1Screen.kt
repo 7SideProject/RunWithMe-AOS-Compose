@@ -35,13 +35,14 @@ import com.side.runwithme.designsystem.components.HorizontalSpacer
 import com.side.runwithme.designsystem.components.MyToolBar
 import com.side.runwithme.designsystem.components.TextInput
 import com.side.runwithme.designsystem.components.VerticalSpacer
+import com.side.runwithme.designsystem.theme.RunWithMeTheme
 import com.side.runwithme.navigation.RunWithMeScreens
 
 @Preview(showBackground = true)
 @Composable
 fun JoinStep1Preview() {
     val navController = rememberNavController()
-    com.side.runwithme.designsystem.theme.RunWithMeTheme {
+    RunWithMeTheme {
         JoinStep1Screen(navController)
     }
 }

@@ -33,7 +33,6 @@ import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.side.runwithme.designsystem.R
-import com.side.runwithme.designsystem.theme.MainGrey
 import com.side.runwithme.designsystem.theme.RunWithMeTheme
 
 @Preview(showBackground = true)
@@ -212,7 +211,7 @@ fun PasswordVisibility(passwordVisibility: MutableState<Boolean>) {
                 id = R.drawable.visibility_on
             ),
             contentDescription = "",
-            tint = MainGrey
+            tint = Color.Gray
         )
     }
 }

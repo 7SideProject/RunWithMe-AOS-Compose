@@ -49,9 +49,10 @@ import androidx.navigation.compose.rememberNavController
 import com.side.runwithme.R
 import com.side.runwithme.designsystem.components.EmailInput
 import com.side.runwithme.designsystem.components.PasswordInput
-import com.side.runwithme.designsystem.components.RoundedKakaoButton
-import com.side.runwithme.designsystem.components.RoundedStrongButton
+import com.side.runwithme.designsystem.components.RoundedButton
+import com.side.runwithme.designsystem.components.RoundedIconButton
 import com.side.runwithme.designsystem.components.VerticalSpacer
+import com.side.runwithme.designsystem.theme.RunWithMeTheme
 import com.side.runwithme.navigation.BottomNavItem
 import com.side.runwithme.navigation.RunWithMeScreens
 import com.side.runwithme.utils.ResponseCodeStatus
@@ -75,7 +76,7 @@ import kotlinx.coroutines.launch
 fun PreviewLoginScreenDesign() {
     val snackbarHostState = remember { SnackbarHostState() }
     val navController = rememberNavController()
-    com.side.runwithme.designsystem.theme.RunWithMeTheme {
+    RunWithMeTheme {
         LoginScreenDesign(snackbarHostState, navController) { _, _ -> }
     }
 }
@@ -133,7 +134,7 @@ fun LoginScreen(
 
 @Composable
 fun LoginButton(onClick: () -> Unit) {
-    RoundedStrongButton(
+    RoundedButton(
         stringResource(id = R.string.login)
     ) {
         onClick.invoke()
@@ -142,8 +143,10 @@ fun LoginButton(onClick: () -> Unit) {
 
 @Composable
 fun KakaoLoginButton(onClick: () -> Unit) {
-    RoundedKakaoButton(
-        stringResource(id = R.string.kakao_login)
+    RoundedIconButton(
+        label = stringResource(id = R.string.kakao_login),
+        iconPainter = painterResource(id = com.side.runwithme.designsystem.R.drawable.kakao_icon),
+        color = Color(0xFFFEE500)
     ) {
         onClick.invoke()
     }

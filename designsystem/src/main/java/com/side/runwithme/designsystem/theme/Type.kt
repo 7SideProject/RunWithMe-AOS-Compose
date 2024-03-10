@@ -13,7 +13,7 @@ import androidx.compose.ui.unit.sp
 // 모든 텍스트 스타일에 적용할 FontFamily를 한 번 정의
 val defaultFontFamily = FontFamily.SansSerif
 
-val Typography = Typography(
+val typography = Typography(
     displayLarge = TextStyle(
         fontFamily = defaultFontFamily,
         fontWeight = FontWeight.Normal,

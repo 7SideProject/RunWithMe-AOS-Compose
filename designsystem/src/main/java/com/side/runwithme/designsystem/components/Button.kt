@@ -1,190 +1,153 @@
 package com.side.runwithme.designsystem.components
 
-import androidx.compose.foundation.BorderStroke
+import android.annotation.SuppressLint
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.defaultMinSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.shape.CornerSize
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
+import androidx.compose.ui.composed
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.side.runwithme.designsystem.R
-import com.side.runwithme.designsystem.theme.Black
-import com.side.runwithme.designsystem.theme.Grey
-import com.side.runwithme.designsystem.theme.MainColor
+import com.side.runwithme.designsystem.theme.DisableColor
 import com.side.runwithme.designsystem.theme.RunWithMeTheme
-import com.side.runwithme.designsystem.theme.White
-
 
 @Preview(showBackground = true)
 @Composable
 fun ButtonPreview() {
     RunWithMeTheme {
         Column {
-            RoundedWeakButton(label = "Button")
-            RoundedStrongButton(label = "로그인")
-            RoundedKakaoButton(label = "카카오 로그인")
-        }
-    }
-}
-
-@Composable
-fun RoundedStrongButton(
-    label: String,
-    modifier: Modifier = Modifier
-        .fillMaxWidth()
-        .height(56.dp),
-    radius: Int = 8,
-    textModifier: Modifier = Modifier
-        .width(90.dp)
-        .height(40.dp),
-    onClick: () -> Unit = {}
-) {
-
-    Surface(
-        modifier = modifier.clip(
-            RoundedCornerShape(CornerSize(radius))
-        ),
-        color = MainColor
-    ) {
-        Column(
-            modifier = textModifier.clickable {
-                onClick.invoke()
-            },
-            verticalArrangement = Arrangement.Center,
-            horizontalAlignment = Alignment.CenterHorizontally
-        ) {
-            Text(
-                text = label,
-                style = MaterialTheme.typography.titleMedium,
-                color = Color.White
+            RoundedButton(label = "로그인")
+            RoundedIconButton(
+                label = "카카오 로그인",
+                iconPainter = painterResource(id = R.drawable.kakao_icon),
+                color = Color(0xFFFEE500)
             )
         }
     }
 }
 
+@SuppressLint("UnnecessaryComposedModifier")
 @Composable
-fun RoundedWeakButton(
+fun RoundedButton(
     label: String,
     modifier: Modifier = Modifier
         .fillMaxWidth()
         .height(56.dp),
+    enabled: Boolean = true,
     radius: Int = 8,
-    textModifier: Modifier = Modifier
-        .width(90.dp)
-        .height(40.dp),
     onClick: () -> Unit = {}
 ) {
+    val minModifier = Modifier
+        .defaultMinSize(minWidth = 90.dp, minHeight = 40.dp)
+        .clickable { onClick.invoke() }
 
-    Surface(
-        modifier = modifier.clip(
-            RoundedCornerShape(CornerSize(radius))
-        ),
-        color = White,
-        border = BorderStroke(2.dp, color = Grey)
+    Button(
+        onClick = onClick,
+        modifier = minModifier.composed { modifier },
+        enabled = enabled,
+        shape = RoundedCornerShape(radius)
     ) {
-        Column(
-            modifier = textModifier.clickable {
-                onClick.invoke()
-            },
-            verticalArrangement = Arrangement.Center,
-            horizontalAlignment = Alignment.CenterHorizontally
-        ) {
-            Text(
-                text = label,
-                style = MaterialTheme.typography.titleMedium,
-                color = Grey
-            )
-        }
+        Text(
+            text = label,
+            style = MaterialTheme.typography.titleMedium
+        )
     }
 }
 
+@SuppressLint("UnnecessaryComposedModifier")
 @Composable
-fun RoundedWhiteButton(
+fun RoundedColorButton(
     label: String,
     modifier: Modifier = Modifier
         .fillMaxWidth()
         .height(56.dp),
+    enabled: Boolean = true,
     radius: Int = 8,
-    textModifier: Modifier = Modifier
-        .width(90.dp)
-        .height(40.dp),
+    color: Color,
     onClick: () -> Unit = {}
 ) {
+    val minModifier = Modifier
+        .defaultMinSize(minWidth = 90.dp, minHeight = 40.dp)
+        .clickable { onClick.invoke() }
 
-    Surface(
-        modifier = modifier.clip(
-            RoundedCornerShape(CornerSize(radius))
-        ),
-        color = White
+    // 다크 모드와 라이트 모드에 대한 버튼 컬러 정의
+    val colors = ButtonDefaults.buttonColors(
+        containerColor = color,
+        disabledContainerColor = DisableColor
+    )
+
+    Button(
+        onClick = onClick,
+        modifier = minModifier.composed { modifier },
+        enabled = enabled,
+        colors = colors,
+        shape = RoundedCornerShape(radius)
     ) {
-        Column(
-            modifier = textModifier.clickable {
-                onClick.invoke()
-            },
-            verticalArrangement = Arrangement.Center,
-            horizontalAlignment = Alignment.CenterHorizontally
-        ) {
-            Text(
-                text = label,
-                style = MaterialTheme.typography.titleSmall,
-                color = Black
-            )
-        }
+        Text(
+            text = label,
+            style = MaterialTheme.typography.titleMedium
+        )
     }
 }
 
+@SuppressLint("UnnecessaryComposedModifier")
 @Composable
-fun RoundedKakaoButton(
+fun RoundedIconButton(
     label: String,
     modifier: Modifier = Modifier
         .fillMaxWidth()
         .height(56.dp),
+    enabled: Boolean = true,
     radius: Int = 8,
-    textModifier: Modifier = Modifier
-        .width(90.dp)
-        .height(40.dp),
+    iconPainter: Painter,
+    color: Color,
     onClick: () -> Unit = {}
 ) {
 
-    Surface(
-        modifier = modifier.clip(
-            RoundedCornerShape(CornerSize(radius))
-        ),
-        color = Color(0xFFFEE500)
+    val minModifier = Modifier
+        .defaultMinSize(minWidth = 90.dp, minHeight = 40.dp)
+        .clickable { onClick.invoke() }
+
+    val colors = ButtonDefaults.buttonColors(
+        containerColor = color,
+        disabledContainerColor = DisableColor
+    )
+
+    Button(
+        onClick = onClick,
+        modifier = minModifier.composed { modifier },
+        enabled = enabled,
+        colors = colors,
+        shape = RoundedCornerShape(radius)
     ) {
         Row(
-            modifier = textModifier
-                .padding(horizontal = 10.dp)
-                .clickable {
-                    onClick.invoke()
-                },
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.Center
         ) {
             Icon(
                 modifier = Modifier.size(20.dp),
-                painter = painterResource(id = R.drawable.kakao_icon),
-                tint = Black,
+                painter = iconPainter,
+                tint = Color.Black,
                 contentDescription = stringResource(id = R.string.running_list)
             )
             Spacer(modifier = Modifier.weight(0.1f))
@@ -193,7 +156,7 @@ fun RoundedKakaoButton(
                 textAlign = TextAlign.Center,
                 text = label,
                 style = MaterialTheme.typography.titleMedium,
-                color = Black
+                color = Color.Black
             )
             Spacer(modifier = Modifier.weight(0.1f))
         }
